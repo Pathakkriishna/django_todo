@@ -20,7 +20,7 @@ from base.views import home, type, create_todo_view, create_type_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home),
+    path('', home , name='home'),
     path('type/', type),
     path('create/todo/', create_todo_view),
     path('create/type/', create_type_view),

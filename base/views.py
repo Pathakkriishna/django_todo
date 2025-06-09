@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Todo
 from .models import Type
@@ -23,6 +23,8 @@ def create_todo_view(request):
         status = request.POST.get('status')
 
         Todo.objects.create(name=name, description=description, status=status)
+
+        return redirect('home')
 
     return render(request, 'create_todo.html')
 
