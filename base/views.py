@@ -15,6 +15,7 @@ def type(request):
     types = Type.objects.all()
     return render(request, 'type.html', context={'types': types})
 
+
 def create_todo_view(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -22,5 +23,14 @@ def create_todo_view(request):
         status = request.POST.get('status')
 
         Todo.objects.create(name=name, description=description, status=status)
-        
+
     return render(request, 'create_todo.html')
+
+
+def create_type_view(request):
+    if request.method == 'POST':
+        todo_type = request.POST.get('todo-type')
+
+        Type.objects.create(name=todo_type)
+
+    return render(request, 'create_type.html')
