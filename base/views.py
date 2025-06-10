@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Todo
 from .models import Type
+from .forms import TodoForm
 
 # Create your views here.
 
@@ -36,3 +37,8 @@ def create_type_view(request):
         Type.objects.create(name=todo_type)
 
     return render(request, 'create_type.html')
+
+def update_todo_view(request, pk):
+    todo_obj = Todo.objects.get(id=pk)
+    todo_form = TodoForm(instance=todo_obj)
+    return render(request, 'update_todo.html', context={'form': todo_form})
