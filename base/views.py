@@ -38,7 +38,21 @@ def create_type_view(request):
 
     return render(request, 'create_type.html')
 
+
 def update_todo_view(request, pk):
+
     todo_obj = Todo.objects.get(id=pk)
     todo_form = TodoForm(instance=todo_obj)
+    if request.method == 'POST':
+        todo_form = TodoForm(instance=todo_obj, data=request.POST)
+        if todo_form.is_valid():
+            todo_form.save()
+            return redirect('home')
     return render(request, 'update_todo.html', context={'form': todo_form})
+
+
+def delete_todo_view(request, pk):
+    todo_obj = Todo.objects.get(id=pk)
+    todo_obj.delete()
+    return redirect('home')
+# modal
