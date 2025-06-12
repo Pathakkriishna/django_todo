@@ -21,9 +21,9 @@ from base.views import home, type, create_todo_view, create_type_view, update_to
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home , name='home'),
-    path('type/', type),
-    path('create/todo/', create_todo_view),
-    path('create/type/', create_type_view),
+    path('type/', type, name = 'type'),
+    path('create/todo/', create_todo_view, name = 'create-todo'),
+    path('create/type/', create_type_view, name = 'create-type'),
     path('update/todo/<int:pk>/', update_todo_view, name = 'update-todo'),
     path('delete/todo/<int:pk>/', delete_todo_view, name = 'delete-todo'),
 ]

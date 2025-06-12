@@ -8,17 +8,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </head>
 <body>
- 
+
+  {% include 'nav.html' %}
    <table class="table table-striped">
-  <thead>
+    <thead>
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
-    </tr>
-  </thead>
+     </tr>
+     </thead>
   <tbody>
     {% for todo in todos%}
         <tr>
@@ -29,7 +30,7 @@
         <td><a href = "{% url 'update-todo' pk=todo.id %}"><button type="button" class="btn btn-warning">Update</button></a></td>
         <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Delete
-</button></td>>
+</button></td>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

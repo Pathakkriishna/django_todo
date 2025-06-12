@@ -8,7 +8,13 @@ from .forms import TodoForm
 
 
 def home(request):
-    todos = Todo.objects.all()
+    search = request.GET.get('search')
+    if search != None and search != '':
+        todos = Todo.objects.filter(name__contains = search)
+        
+
+    else:
+        todos = Todo.objects.all()
     return render(request, 'index.html', context={'todos': todos})
 
 
@@ -55,4 +61,5 @@ def delete_todo_view(request, pk):
     todo_obj = Todo.objects.get(id=pk)
     todo_obj.delete()
     return redirect('home')
-# modal
+
+
